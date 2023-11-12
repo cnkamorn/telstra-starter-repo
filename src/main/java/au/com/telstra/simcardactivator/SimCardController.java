@@ -18,7 +18,7 @@ public class SimCardController {
     @Autowired
     SimCardService simCardService;
 
-    @PostMapping("/active")
+    @PostMapping("/activate")
     public ResponseEntity<String> activeSim(@RequestBody SimCard sm){
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -38,7 +38,7 @@ public class SimCardController {
     public Optional<SimCard> createSimCard(SimCard sm){
         return simCardService.createSimCard(sm);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/query?simCardId={id}")
     public Optional<SimCard> getSimCard(@PathVariable long id ){
        return simCardService.getSimCard(id);
     }
