@@ -38,8 +38,8 @@ public class SimCardController {
     public Optional<SimCard> createSimCard(SimCard sm){
         return simCardService.createSimCard(sm);
     }
-    @GetMapping("/query?simCardId={id}")
-    public Optional<SimCard> getSimCard(@PathVariable long id ){
+    @GetMapping(value ="/query")
+    public Optional<SimCard> getSimCard(@RequestParam long id ){
        return simCardService.getSimCard(id);
     }
 }
