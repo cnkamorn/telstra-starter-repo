@@ -11,7 +11,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/simcard")
 public class simCardController {
-
+/*
     @PostMapping
     public ResponseEntity<String> activeSim(@RequestBody Map<String,String> payload){
         RestTemplate restTemplate = new RestTemplate();
@@ -21,7 +21,15 @@ public class simCardController {
         HttpEntity<Map<String,String>> httpEntity = new HttpEntity<>(iccid,headers);
         ResponseEntity<String> result = restTemplate.postForEntity("http://localhost:8444/actuate",httpEntity,String.class);
         return result;
+    }*/
+
+    @PostMapping
+    public ResponseEntity<String> activeSim(@RequestBody SimCard sm){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<SimCard> httpEntity = new HttpEntity<>(sm,headers);
+        ResponseEntity<String> result = restTemplate.postForEntity("http://localhost:8444/actuate",httpEntity,String.class);
+        return result;
     }
-
-
 }
