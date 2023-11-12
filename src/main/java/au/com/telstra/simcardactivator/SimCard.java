@@ -1,9 +1,19 @@
 package au.com.telstra.simcardactivator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SimCard {
+    @javax.persistence.Id
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
     private String iccid;
     private String customerEmail;
     private boolean active;
@@ -44,5 +54,13 @@ public class SimCard {
     @Override
     public String toString() {
         return "SimCard {iccid=" + iccid + ", customerEmail=" + customerEmail + ", active=" + active + "}";
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
